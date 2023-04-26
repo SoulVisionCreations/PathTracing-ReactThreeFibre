@@ -1,0 +1,34 @@
+{
+  "name": "@react-three/gpu-pathtracer-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Faraz Shaikh <farazzshaikh@gmail.com>",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "package",
+      "examples/*"
+    ]
+  },
+  "preconstruct": {
+    "packages": [
+      "package"
+    ]
+  },
+  "scripts": {
+    "build": "preconstruct build",
+    "dev": "preconstruct dev && yarn workspace basic start",
+    "postinstall": "preconstruct dev && manypkg check",
+    "ci": "preconstruct validate && manypkg check && yarn build",
+    "clean": "rm -rf node_modules package/dist examples/*/node_modules"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.24.3",
+    "@manypkg/cli": "^0.19.1",
+    "@preconstruct/cli": "^2.1.5"
+  },
+  "stackblitz": {
+    "startCommand": "cd examples/waves && yarn start"
+  }
+}
